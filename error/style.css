@@ -1,0 +1,70 @@
+
+
+@font-face {
+    font-family: Oswald;
+    src:url(font/Oswald-VariableFont_wght.ttf);
+}
+
+*{
+
+  box-sizing: border-box;
+  font-family: Oswald;
+  font-weight: 400;  
+}
+body{
+  background-color:white;
+  font-family: Oswald;
+  color: black;
+  align-items: center;
+}
+
+main{
+  background-color: rgb(252, 248, 248);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin:200px auto;
+  width:500px;
+  align-self: center;
+  border: 5px solid orange;
+}
+
+main:hover{
+transform: translateY(-6px);
+box-shadow: 0 6px  orange;
+}
+
+.error{
+  margin-bottom: 100px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.error-txt{
+  font-size: 70px;
+  font-weight: 700;
+  padding-top: 184px;
+}
+
+span{
+  color: orange;
+}
+
+
+.desc{
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+
+.volver{
+  margin-bottom: 50px;
+  font-size: 20px;
+  text-decoration: solid;
+  color: black;
+}
+
+.volver:hover{
+  color: orange;
+  cursor:pointer
+}

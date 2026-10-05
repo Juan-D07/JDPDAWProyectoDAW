@@ -1,0 +1,202 @@
+@font-face {
+    font-family: Oswald;
+    src:url(font/Oswald-VariableFont_wght.ttf);
+}
+
+*{
+
+  box-sizing: border-box;
+  font-family: Oswald;
+  font-weight: 400; 
+  
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  margin: 0;
+  color:black;
+  font-family: Roboto, Arial;
+  background-color: rgb(255, 253, 253);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+header{
+  display:flex;
+  background-color: rgb(10, 10, 10);
+  color: white;
+  height: 120px;
+  align-items: center;
+}
+
+
+
+.header-izq img{
+  height: 100px;
+  border-radius: 50px;
+  border: 2px solid orange;
+  padding:0px 0px 2px 2px
+}
+
+.header-izq{
+  flex:1;
+  align-content: center;
+  padding-left: 30px;
+}
+
+.header-der{
+  flex:3;
+  
+}
+
+h2{
+  text-align: center;
+  font-size: 1.6vw;
+  border-bottom: 2px solid orange;
+  padding: 4px;
+  margin: 0 12vw;
+}
+
+
+
+a {
+  text-decoration: none; 
+}
+
+
+.grid-div{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 2vw  6vw;
+  column-gap:3vw;
+  row-gap: 5vw;
+}
+
+.unidad-div{
+  text-decoration: none;
+  border:4px solid orange;
+  color: black;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+
+.unidad-titulo{
+  width: 100%;
+  padding: 6px 0;
+  font-size: 1.8vw;
+  font-weight: 700;
+}
+
+
+.grid-div{
+ .unidad-div:nth-child(1) .unidad-titulo,
+ .unidad-div:nth-child(2) .unidad-titulo{
+  border-bottom: 3px solid orange;
+  margin-bottom: 10px;
+}
+}
+
+.ejercicio-nombre{
+  color:black;
+  background-color: orange;
+  padding: 2px 6px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.ejercicio-nombre:hover{
+  color:white;
+  background-color: rgb(10, 10, 10);
+}
+
+.funcional .unidad-titulo{
+  color: black;
+}
+
+.funcional .unidad-titulo:hover{
+  color: orange;
+}
+
+
+
+footer{
+  margin-top: auto;
+  background-color: rgb(10, 10, 10);
+  padding: 20px;
+  color:white;
+  font-size: 20px;
+  font-style:normal;
+}
+
+.foo-txt{
+  text-align: center;
+}
+
+.miweb-link{
+  color:white;
+  text-decoration: none;
+}
+
+.miweb-link:hover{
+  color:orange;
+}
+
+.github{
+  height:30px;
+  padding-left: 10px;  
+}
+
+
+@media (min-width:1001px) and (max-width: 1500px){
+  .grid-div{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .eje-nombre{
+    font-size: 16px;
+  }
+}
+
+@media (min-width:621px) and (max-width: 1001px){
+  .grid-div{
+    grid-template-columns: 1fr 1fr;
+  }
+  .ejercicio-nombre{
+    font-size: 16px;
+    padding: 2px 4px;
+  }
+
+  .unidad-titulo{
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 620px){
+  .grid-div{
+    grid-template-columns: 1fr;
+  }
+  .ejercicio-nombre{
+    font-size: 14px;
+    padding: 1px 2px;
+  }
+  h2{
+    font-size: 22px;
+  }
+  .unidad-titulo{
+    font-size: 22px;
+  }
+
+}
+
+@media (min-width: 2600px){
+  .unidad-titulo{
+    font-size: 60px;
+  }
+}
+
