@@ -1,5 +1,5 @@
 
-### FASE 4: Configuración de Mauina Virtual para Desarrollo Web
+### Configuración de Mauina Virtual para Desarrollo Web
 
 Clonar la Maquina Virtual Limpia 
 
