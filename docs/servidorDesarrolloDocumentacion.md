@@ -1,5 +1,5 @@
 
-### Configuración de Mauina Virtual para Desarrollo Web
+### Configuración de Maquina Virtual para Desarrollo Web
 
 Clonar la Maquina Virtual Limpia 
 
