@@ -25,34 +25,25 @@
   <main>
     <div class="grid-div">
         <div class="unidad-div">
-          <div class="unidad-titulo">DESARROLLO WEB EN ENTORNO SERVIDOR</div>
-          <span><a class="ejercicio-nombre" href="docs/EstudioTema1.pdf" target="_blank"> Estudio Tema 1 </a></span>
+          <div class="unidad-titulo">Arquitectura web</div>
         </div>
         <div class="unidad-div">
-          <div class="unidad-titulo">INSTALACIÓN Y CONFIGURACIÓN</div>
-          <span><a class="ejercicio-nombre" href="https://github.com/Juan-D07/JDPDAWProyectoDAW/servidorDesarrolloDocu.md" target="_blank"> Servidor de Desarrollo Documentacion </a></span>
+          <div class="unidad-titulo">Implantación, configuración y administración de servidores web</div>
         </div>
         <div class="unidad-div">
-          <a class="funcional" href="../JDPDWESProyectoTema3/indexProyectoTema3.php">
-            <div class="unidad-titulo">CARACTERÍSTICAS DEL LENGUAJE PHP </div>
+          <a class="funcional">
+            <div class="unidad-titulo">Implantación, configuración y administración de servidores de aplicación </div>
           </a>
         </div>
         <div class="unidad-div">
-          <div class="unidad-titulo">TÉCNICAS DE ACCESO A DATOS EN PHP</div>
+          <div class="unidad-titulo">Servicios de red implicados en el despliegue de aplicaciones</div>
         </div>
         <div class="unidad-div">
-          <div class="unidad-titulo"> DESARROLLO DE APLICACIONES WEB</div>
+          <div class="unidad-titulo">Control de versiones</div>
         </div>
         <div class="unidad-div">
-          <div class="unidad-titulo"> APLICACIONES WEB MULTICAPA</div>
+          <div class="unidad-titulo"> Documentación</div>
         </div>
-        <div class="unidad-div">
-          <div class="unidad-titulo"> PROGRAMACIÓN DE SERVICIOS WEB</div>
-        </div>
-        <div class="unidad-div">
-          <div class="unidad-titulo"> DESARROLLO DE APLICACIONES WEB HÍBRIDAS</div>
-        </div>
-      </div>
   </main>
 
   <footer>

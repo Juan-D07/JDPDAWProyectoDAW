@@ -93,7 +93,7 @@ a {
   font-weight: 700;
 }
 
-
+/*
 .grid-div{
  .unidad-div:nth-child(1) .unidad-titulo,
  .unidad-div:nth-child(2) .unidad-titulo{
@@ -101,6 +101,7 @@ a {
   margin-bottom: 10px;
 }
 }
+*/
 
 .ejercicio-nombre{
   color:black;
