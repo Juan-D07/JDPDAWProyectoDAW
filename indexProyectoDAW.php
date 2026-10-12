@@ -28,15 +28,17 @@
           <div class="unidad-titulo">Arquitectura web</div>
         </div>
         <div class="unidad-div">
-          <div class="unidad-titulo">Implantación, configuración y administración de servidores web</div>
+          <div class="unidad-titulo">Imple., confi. y admin. de servidores web</div>
+          <span><a class="ejercicio-nombre" href="https://github.com/Juan-D07/JDPDAWProyectoDAW/blob/main/docs/Documentacion-JDP-USED.md" target="_blank"> USED - Servidor Web</a></span> <br><br>
+          <span><a class="ejercicio-nombre" href="https://github.com/Juan-D07/JDPDAWProyectoDAW/blob/main/docs/Documentacion-JDP-W10ED.md" target="_blank"> W11ED - Cliente de Desarrollo</a></span>        
         </div>
         <div class="unidad-div">
           <a class="funcional">
-            <div class="unidad-titulo">Implantación, configuración y administración de servidores de aplicación </div>
+            <div class="unidad-titulo">Imple., confi. y admin. de servidores de aplicación </div>
           </a>
         </div>
         <div class="unidad-div">
-          <div class="unidad-titulo">Servicios de red implicados en el despliegue de aplicaciones</div>
+          <div class="unidad-titulo">Servicios de red implicados en el despliegue de aplica.</div>
         </div>
         <div class="unidad-div">
           <div class="unidad-titulo">Control de versiones</div>
