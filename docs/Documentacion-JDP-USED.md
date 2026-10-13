@@ -5,10 +5,10 @@
 
 ---
 
-## 📑 Índice de Contenidos
+## Índice de Contenidos
 
 - [USED – Ubuntu Server](#used--ubuntu-server)
-  - [📑 Índice de Contenidos](#-índice-de-contenidos)
+  - [ Índice de Contenidos](#-índice-de-contenidos)
   - [1. Configuración Inicial](#1-configuración-inicial)
     - [1.1. Preparación de la Máquina Virtual (VirtualBox)](#11-preparación-de-la-máquina-virtual-virtualbox)
     - [1.2. Instalación del Sistema Operativo (Ubuntu Server)](#12-instalación-del-sistema-operativo-ubuntu-server)

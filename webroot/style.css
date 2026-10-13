@@ -101,6 +101,12 @@ a {
 }
 }
 
+.lista-ejercicio{
+  display: flex;
+  flex-direction: column;
+  gap:14px;
+}
+
 .ejercicio-nombre{
   color:black;
   background-color: orange;
@@ -118,10 +124,10 @@ a {
   color: black;
 }
 
-.funcional .unidad-titulo:hover{
+/*.funcional .unidad-titulo:hover{
   color: orange;
 }
-
+*/
 
 
 footer{

@@ -1,9 +1,9 @@
-# W10ED Cliente de Desarrollo
+# W11ED Cliente de Desarrollo
 
 ## Maquina Anfitriona
 
 ### Especificaciones de la Maquinas:
-Sistema Operativo: `Windows 10`
+Sistema Operativo: `Windows 11`
 Cuenta de Operador: `juanm.domper`
 Ruta de Proyectos: `D:\ProyectosNB`
 
