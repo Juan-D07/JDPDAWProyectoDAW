@@ -150,6 +150,11 @@ sudo freshclam
 # Iniciar y habilitar el servicio de actualización del antivirus
 sudo systemctl start clamav-freshclam
 sudo systemctl enable clamav-freshclam
+
+# Cambio de nombre de la maquina
+sudo hostnamectl set-hostname 'nuevo-nombre'
+sudo nano /etc/hosts 
+#Cambiar antiguo hostname por con el nuevo
 ```
 
 ---
