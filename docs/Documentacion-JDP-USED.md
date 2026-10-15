@@ -27,6 +27,12 @@
     - [4.1. Instalación de PHP 8.5-FPM](#41-instalación-de-php-85-fpm)
     - [4.2. Integración de PHP-FPM con Apache2](#42-integración-de-php-fpm-con-apache2)
     - [4.3. Comprobación del Servicio PHP-FPM](#43-comprobación-del-servicio-php-fpm)
+  - [5. MariaDB](#5-mariadb)
+    - [5.1. Instalación de MariaDB](#51-instalación-de-mariadb)
+    - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb)
+    - [5.3. Comprobación del Servicio MariaDB](#53-comprobación-del-servicio-mariadb)
+    - [5.4. Instalación de phpMyAdmin](#54-instalación-de-phpmyadmin)
+    - [5.5. Comprobación de phpMyAdmin](#55-comprobación-de-phpmyadmin)
 
 ---
 
