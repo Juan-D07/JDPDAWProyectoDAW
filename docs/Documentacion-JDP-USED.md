@@ -409,7 +409,7 @@ sudo apt update
 sudo apt install mariadb-server -y
 
 # Reiniciar mariadb-server 
-sudo systemctl restart mariadb-server 
+sudo systemctl restart mariadb 
 ```
 
 ---
@@ -452,7 +452,7 @@ sudo systemctl restart mariadb-server
 sudo apt install php8.5-mysql
 
 # Reiniciar servicio
-sudo systemctl restart php-fpm
+sudo systemctl restart php8.5-fpm
 
 ```
 
@@ -482,7 +482,7 @@ sudo ufw status
 
 ---
 
-#### 5.4 Instalación de phpMyAdmin
+### 5.4 Instalación de phpMyAdmin
 
 - Usa el comando `sudo apt install phpmyadmin php-mbstring php-zip php-gd php-json php-curl` iniciar la instalacion de phpmyadmin
 
@@ -496,7 +496,7 @@ sudo ufw status
 - Ingresar contraseña: `paso`
 
 ---
-#### 5.5 Comprobación de phpmyadmin
+### 5.5 Comprobación de phpmyadmin
 
 Accede a traves de la URL **http://IP/phpmyadmin**
 
