@@ -22,7 +22,8 @@
   - [3. Apache](#3-apache)
     - [3.1. Instalación de Apache2](#31-instalación-de-apache2)
     - [3.2. Configuración de HTTP, HTTPS (SSL) y Cortafuegos](#32-configuración-de-http-https-ssl-y-cortafuegos)
-    - [3.3. Comprobación del Servicio Apache](#33-comprobación-del-servicio-apache)
+    - [3.3. Configuracion Apache HTTPS](#33-configuracion-apache-https)
+    - [3.4. Comprobación del Servicio Apache](#34-comprobación-del-servicio-apache)
   - [4. PHP](#4-php)
     - [4.1. Instalación de PHP 8.5-FPM](#41-instalación-de-php-85-fpm)
     - [4.2. Integración de PHP-FPM con Apache2](#42-integración-de-php-fpm-con-apache2)
@@ -306,7 +307,7 @@ sudo apt install apache2 -y
 
 ---
 
-### 3.2. Configuración de HTTP, HTTPS (SSL) y Cortafuegos
+### 3.2. Configuración de HTTP, SSL y Cortafuegos
 
 ```bash
 # Activar el módulo SSL
@@ -322,9 +323,135 @@ sudo systemctl restart apache2
 sudo ufw allow 'Apache Full'
 ```
 
+#### Configuracion de Archivo apache.conf
+
+Entrar al archivo usando `sudo nano /etc/apache2/apache2.conf`  
+
+**Escribe en el archivo:**
+
+> Servername *nombre_de_la_maquina*
+
+Comprobar que no haiga errores en el archivo de configuracion: `sudo apache2ctl configtest`  
+Reinicio de apache: `sudo systemctl restart apache2`  
+
+
+#### Configuracion de Codigos de Errores con HTTP 
+
+Hacer copia del archivo de configuracion con: `sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.backup`  
+Entrar al archivo usando: `sudo nano /etc/apache2/sites-available/000-default.conf`  
+
+**Escribe en el archivo:**
+```bash
+<VirtualHost *:80>
+...
+
+ErrorDocument 404 /error/error.html
+</VirtualHost>
+```
+Comprobar que no haiga errores en el archivo de configuracion: `sudo apache2ctl configtest`  
+Reinicio de apache: `sudo systemctl restart apache2`  
+
 ---
 
-### 3.3. Comprobación del Servicio Apache
+### 3.3. Configuracion Apache HTTPS
+
+**Creacion de certificado y llave de autofirmado**
+
+- Un certificado autofirmado cifrará la comunicación entre su servidor y cualquier cliente. Sin embargo, dado que no está firmado por ninguna de las autoridades certificadoras de confianza incluidas con los navegadores web y los sistemas operativos, los usuarios no pueden usar el certificado para validar la identidad de su servidor de forma automática. Como resultado, sus usuarios verán un error de seguridad cuando visiten su sitio.
+
+> `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt -subj "/CN=10.199.9.114" -addext "subjectAltName = IP:10.199.9.114"`
+
+**Explicacion del Comando**
+- Openssl -> Es la utilidad para trabajar con criptografía y certificados.​
+- Req -> Modulo de gestión de certificados​
+- x509 -> Certificado X.509 autofirmado​
+- nodes -> La clave privada se genera mediante una passphrase (así no pide una contraseña)​
+- days 365 -> Válido por 365 días​
+- newkey rsa:2048 -> Clave RSA de 2048 bits​
+- keyout -> Ruta para guardar la clave privada​
+- out -> Ruta para guardar el certificado
+
+Hacer copia del archivo de configuracion: `sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.backup`  
+Entrar al archivo usando: `sudo nano /etc/apache2/sites-available/default-ssl.conf`  
+
+**Modificar el archivo:**
+```bash
+<VirtualHost *:443>
+  ServerAdmin webmaster@localhost​
+  ServerName DirecciónIP​
+  DocumentRoot /var/www/html ​
+
+  SSLEngine on ​
+  SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt ​
+  SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key ​
+
+  ErrorLog ${APACHE_LOG_DIR}/daw-ssl-error.log ​
+  CustomLog ${APACHE_LOG_DIR}/daw-ssl-access.log combined 
+</VirtualHost>
+```
+Aplicar cambios: `sudo a2ensite default-ssl.conf`
+Comprobar que no haiga errores en el archivo de configuracion: `sudo apache2ctl configtest`  
+Reinicio de apache: `sudo systemctl restart apache2`  
+
+#### Redireccion HTTP a HTTPS
+
+Usar el comando `sudo a2enmod rewrite` para activar el modulo de rewrite   
+
+Entrar al archivo de configuracion usando `sudo nano /etc/apache2/apache2.conf`  
+
+**Modificar el valor de AllowOverride en el archivo:**
+```bash
+<Directory /var/www/>
+  ...
+  AllowOverride All
+</Directory>
+```
+
+Comprobacion del archivo: `sudo apache2ctl configtest`
+Recarga del servicio: `sudo systemctl reload apache2`
+
+
+**Creacion de Fichero .htaccess**
+*Usar el usuario operadorweb para esto paso*
+
+Crear fichero .htaccess en el DocumentRoot  
+
+- En este caso `/var/www/html/.htaccess`
+
+Contenido del fichero:
+```bash
+RewriteEngine On ​
+RewriteCond %{SERVER_PORT} 80 ​
+RewriteRule ^(.*)$ https://IPMAQUINA/$1 [R,L]
+```
+
+**Explicacion de las directivas de .htaccess**
+- **Options +FollowSymLinks** - es una directiva de Apache, requisito previo para mod_rewrite.
+- **RewriteEngine On** - habilita mod_rewrite.
+- **RewriteCond %{SERVER_PORT} 80** - sirve para indicar que todas las peticiones que se realicen al puerto 80 (puerto por defecto de Apache para servicio web), deseamos que vayan a través de la regla especificada.
+- **RewriteRule** - define una regla particular. Dentro de la regla de reescritura, la primera cadena de caracteres después de RewriteRule, define lo que la URL original parece. La segunda cadena después de RewriteRule define la nueva URL.
+- **$1** - Este carácter especial, sustituye (o indica) la parte entre paréntesis, especificada en la primera cadena. Básicamente, lo que haces es asegurar que las sub-páginas redireccionan a la misma sub-página y no a la página principal. Puede omitirlo para redirigir a la página principal. (Si usted no tiene el mismo contenido en el nuevo directorio que había en el antiguo directorio, deje esta expresión regular
+- **[R,L]** - Esta opción, realiza una redirección, y también deshabilita que las reglas de reescritura que estén escritas después afecten a la dirección URL (una buena idea para añadir después de la última rewrite rule).
+
+#### Configuracion de Codigos de Errores con HTTPS 
+
+Hacer copia del archivo de configuracion, si no ha sido copiado previamente: `sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf.backup`  
+Entrar al archivo usando: `sudo nano /etc/apache2/sites-available/default-ssl.conf`  
+
+**Escribe en el archivo:**
+```bash
+<VirtualHost *:443>
+...
+
+ErrorDocument 404 /error/error.html
+</VirtualHost>
+```
+Comprobar que no haiga errores en el archivo de configuracion: `sudo apachectl configtest`  
+Reinicio de apache: `sudo systemctl restart apache2`  
+
+---
+
+### 3.4. Comprobación del Servicio Apache
 
 ```bash
 # Comprobar el estado del servicio Apache (HTTP/HTTPS)
@@ -335,6 +462,12 @@ sudo ufw status
 
 # Comprobar que Apache escucha en los puertos 80 y 443
 sudo ss -tlpn | grep apache2
+
+# Comprobar modulos de apache
+sudo apache2ctl -M
+
+# Comprobar sites de apache
+sudo apache2ctl -S
 ```
 - **Comprobación web:** Entra desde el navegador del equipo anfitrión a `http://<IP_SERVIDOR>` y `https://<IP_SERVIDOR>` para verificar que carga la página por defecto de Apache2.
 
@@ -504,8 +637,8 @@ sudo ufw status
 ---
 ### 5.5 Comprobación de phpmyadmin
 
-Accede a traves de la URL **http://IP/phpmyadmin**
+Accede a traves de la URL **http://IP/phpmyadmin**  
 
-
+---
 Autor: Moises Dominguez Cruz
 Modificado por: Juan Miguel Dominguez Perdigon
