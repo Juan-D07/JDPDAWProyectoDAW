@@ -1,14 +1,14 @@
 # USED – Ubuntu Server
 *(Servidor de desarrollo para aplicaciones web basadas en el uso de PHP)*
 
-**Guía de Instalación y Configuración: Ubuntu Server (`JDP-USLimpia`)**
+**Guía de Instalación y Configuración: Ubuntu Server (`JDP-USED`)**
 
 ---
 
 ## Índice de Contenidos
 
 - [USED – Ubuntu Server](#used--ubuntu-server)
-  - [ Índice de Contenidos](#-índice-de-contenidos)
+  - [Índice de Contenidos](#índice-de-contenidos)
   - [1. Configuración Inicial](#1-configuración-inicial)
     - [1.1. Preparación de la Máquina Virtual (VirtualBox)](#11-preparación-de-la-máquina-virtual-virtualbox)
     - [1.2. Instalación del Sistema Operativo (Ubuntu Server)](#12-instalación-del-sistema-operativo-ubuntu-server)
@@ -21,19 +21,29 @@
     - [2.3. Comprobación de Cuentas y Permisos](#23-comprobación-de-cuentas-y-permisos)
   - [3. Apache](#3-apache)
     - [3.1. Instalación de Apache2](#31-instalación-de-apache2)
-    - [3.2. Configuración de HTTP, HTTPS (SSL) y Cortafuegos](#32-configuración-de-http-https-ssl-y-cortafuegos)
+    - [3.2. Configuración de HTTP, SSL y Cortafuegos](#32-configuración-de-http-ssl-y-cortafuegos)
+      - [Configuracion de Archivo apache.conf](#configuracion-de-archivo-apacheconf)
+      - [Configuracion de Codigos de Errores con HTTP](#configuracion-de-codigos-de-errores-con-http)
     - [3.3. Configuracion Apache HTTPS](#33-configuracion-apache-https)
+      - [Redireccion HTTP a HTTPS](#redireccion-http-a-https)
+      - [Configuracion de Codigos de Errores con HTTPS](#configuracion-de-codigos-de-errores-con-https)
     - [3.4. Comprobación del Servicio Apache](#34-comprobación-del-servicio-apache)
   - [4. PHP](#4-php)
     - [4.1. Instalación de PHP 8.5-FPM](#41-instalación-de-php-85-fpm)
     - [4.2. Integración de PHP-FPM con Apache2](#42-integración-de-php-fpm-con-apache2)
+        - [Configurar para Desarrollo](#configurar-para-desarrollo)
     - [4.3. Comprobación del Servicio PHP-FPM](#43-comprobación-del-servicio-php-fpm)
   - [5. MariaDB](#5-mariadb)
     - [5.1. Instalación de MariaDB](#51-instalación-de-mariadb)
     - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb)
+      - [Configuración de puerto](#configuración-de-puerto)
+      - [Creación de Usuario](#creación-de-usuario)
+      - [Instalación Segura](#instalación-segura)
+      - [Instalación de Modulo de mysql en PHP](#instalación-de-modulo-de-mysql-en-php)
+      - [Abrir Puerto en UFW](#abrir-puerto-en-ufw)
     - [5.3. Comprobación del Servicio MariaDB](#53-comprobación-del-servicio-mariadb)
-    - [5.4. Instalación de phpMyAdmin](#54-instalación-de-phpmyadmin)
-    - [5.5. Comprobación de phpMyAdmin](#55-comprobación-de-phpmyadmin)
+    - [5.4 Instalación de phpMyAdmin](#54-instalación-de-phpmyadmin)
+    - [5.5 Comprobación de phpmyadmin](#55-comprobación-de-phpmyadmin)
 
 ---
 

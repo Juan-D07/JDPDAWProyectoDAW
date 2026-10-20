@@ -1,31 +1,98 @@
-# W11ED Cliente de Desarrollo
+# W11ED - Cliente de Desarrollo
 
-## Maquina Anfitriona
+## Índice de Contenidos
 
-### Especificaciones de la Maquinas:
+- [W11ED - Cliente de Desarrollo](#w11ed---cliente-de-desarrollo)
+  - [Índice de Contenidos](#índice-de-contenidos)
+  - [1. Configuracion Inicial de la Maquina](#1-configuracion-inicial-de-la-maquina)
+    - [1.1 Especificaciones de la Maquinas:](#11-especificaciones-de-la-maquinas)
+  - [2. Cuentas Administradoras y Cuenta de Desarrollo](#2-cuentas-administradoras-y-cuenta-de-desarrollo)
+    - [2.1 Cuentas](#21-cuentas)
+  - [3. Navegadores](#3-navegadores)
+    - [3.1 Google Chrome](#31-google-chrome)
+      - [Instalacion](#instalacion)
+      - [Configuracion](#configuracion)
+      - [Ejemplo de Uso](#ejemplo-de-uso)
+  - [4. MobaXterm](#4-mobaxterm)
+    - [4.1 Instalacion](#41-instalacion)
+    - [4.2 Configuracion](#42-configuracion)
+    - [4.3 Ejemplo de Uso](#43-ejemplo-de-uso)
+  - [5. IDE Netbeans](#5-ide-netbeans)
+    - [5.1 Instalacion](#51-instalacion)
+    - [5.2 Configuracion](#52-configuracion)
+      - [Gestion de Pluggins](#gestion-de-pluggins)
+        - [Abrir](#abrir)
+        - [Actualizar](#actualizar)
+        - [Administrar](#administrar)
+    - [5.3 Ejemplo de Uso](#53-ejemplo-de-uso)
+      - [Creación de Proyecto en Netbeans](#creación-de-proyecto-en-netbeans)
+        - [Pasos de Creación](#pasos-de-creación)
+        - [Conexión con el Servidor](#conexión-con-el-servidor)
+      - [Pasos de Creación de Archivo](#pasos-de-creación-de-archivo)
+      - [Modificación de Proyecto en Netbeans](#modificación-de-proyecto-en-netbeans)
+      - [Eliminación de Proyecto en Netbeans](#eliminación-de-proyecto-en-netbeans)
+      - [Enlace de Proyecto en Netbeans con el Servidor](#enlace-de-proyecto-en-netbeans-con-el-servidor)
+      - [Enlace de Proyecto en Netbeans con el GitHub](#enlace-de-proyecto-en-netbeans-con-el-github)
+
+---
+
+
+
+## 1. Configuracion Inicial de la Maquina 
+
+### 1.1 Especificaciones de la Maquinas:
 Sistema Operativo: `Windows 11`
 Cuenta de Operador: `juanm.domper`
 Ruta de Proyectos: `D:\ProyectosNB`
 
+## 2. Cuentas Administradoras y Cuenta de Desarrollo
 
-## IDE Netbeans
+### 2.1 Cuentas
 
-### Gestion de Pluggins
+## 3. Navegadores
 
-#### Abrir
+### 3.1 Google Chrome
+
+#### Instalacion
+
+#### Configuracion
+
+#### Ejemplo de Uso
+
+## 4. MobaXterm
+
+### 4.1 Instalacion
+
+
+
+### 4.2 Configuracion
+
+### 4.3 Ejemplo de Uso
+
+## 5. IDE Netbeans
+
+### 5.1 Instalacion
+
+### 5.2 Configuracion
+
+#### Gestion de Pluggins
+
+##### Abrir
 - Hacemos click en `Tools` y luego en `Plugins`
 
-#### Actualizar
+##### Actualizar
 - Hacemos click en `Updates` y luego en `Check for Updates`
 - Actualizamos cualquier plugin disponible
 
-#### Administrar 
+##### Administrar 
 - Hacemos click en `Installed`
 - Seleccionamos los plugins deseados y podemos escoger si `Activar`, `Desactivar` o `Desinstalar`
 
-### Creación de Proyecto en Netbeans
+### 5.3 Ejemplo de Uso
 
-#### Pasos de Creación
+#### Creación de Proyecto en Netbeans
+
+##### Pasos de Creación
 1. Hacemos click en `File`
 2. click en `Nuevo Proyecto...`
 3. En categorias seleccionamos `PHP` y en proyectos `PHP Application`
@@ -56,8 +123,10 @@ Ruta de Proyectos: `D:\ProyectosNB`
 3. Escribre el nombre que refleje los estandares y finaliza
 
 
-### Modificación de Proyecto en Netbeans
-### Eliminación de Proyecto en Netbeans
-### Enlace de Proyecto en Netbeans con el Servidor
-### Enlace de Proyecto en Netbeans con el GitHub
+#### Modificación de Proyecto en Netbeans
+
+
+#### Eliminación de Proyecto en Netbeans
+#### Enlace de Proyecto en Netbeans con el Servidor
+#### Enlace de Proyecto en Netbeans con el GitHub
 
