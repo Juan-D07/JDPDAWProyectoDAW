@@ -31,7 +31,7 @@
           <div class="unidad-titulo">Imple., confi. y admin. de servidores web</div>
           <div class="lista-ejercicio">
             <span><a class="ejercicio-nombre" href="https://github.com/Juan-D07/JDPDAWProyectoDAW/blob/main/docs/Documentacion-JDP-USED.md" target="_blank"> USED - Servidor Web</a></span>
-            <span><a class="ejercicio-nombre" href="https://github.com/Juan-D07/JDPDAWProyectoDAW/blob/main/docs/Documentacion-JDP-W10ED.md" target="_blank"> W11ED - Cliente de Desarrollo</a></span>
+            <span><a class="ejercicio-nombre" href="https://github.com/Juan-D07/JDPDAWProyectoDAW/blob/main/docs/Documentacion-JDP-W11ED.md" target="_blank"> W11ED - Cliente de Desarrollo</a></span>
           </div>      
         </div>
         <div class="unidad-div">

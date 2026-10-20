@@ -30,6 +30,7 @@
         - [Conexión con el Servidor](#conexión-con-el-servidor)
       - [Pasos de Creación de Archivo](#pasos-de-creación-de-archivo)
       - [Modificación de Proyecto en Netbeans](#modificación-de-proyecto-en-netbeans)
+        - [Pasos de Modificación de Proyecto](#pasos-de-modificación-de-proyecto)
       - [Eliminación de Proyecto en Netbeans](#eliminación-de-proyecto-en-netbeans)
       - [Enlace de Proyecto en Netbeans con el Servidor](#enlace-de-proyecto-en-netbeans-con-el-servidor)
       - [Enlace de Proyecto en Netbeans con el GitHub](#enlace-de-proyecto-en-netbeans-con-el-github)
@@ -118,12 +119,17 @@ Ruta de Proyectos: `D:\ProyectosNB`
 
 
 #### Pasos de Creación de Archivo
-1. Hacemos click derecho en directorio donde desseas guarda el fichero
+1. Hacemos click derecho en el proyecto donde deseas guardad el fichero
 2. Click en `Nuevo` y luego en tipo de archivo que te interese
 3. Escribre el nombre que refleje los estandares y finaliza
 
 
 #### Modificación de Proyecto en Netbeans
+
+##### Pasos de Modificación de Proyecto
+1. Hacemos click derecho en el proyecto que deseas modificar
+2. Podemos `Cambiar el nombre`, `Mover`, o `Copiar`
+3. Y si le damos click a `Propiedades`,  Podremos ver la configuracion del Proyecto y hacer cualquier modificacion que queramos
 
 
 #### Eliminación de Proyecto en Netbeans
