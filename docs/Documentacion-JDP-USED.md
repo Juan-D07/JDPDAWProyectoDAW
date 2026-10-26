@@ -17,8 +17,7 @@
     - [1.5. Comprobación de la Configuración Inicial](#15-comprobación-de-la-configuración-inicial)
   - [2. Cuentas de Administración](#2-cuentas-de-administración)
     - [2.1. Cuentas Administradoras (`miadmin` y `miadmin2`)](#21-cuentas-administradoras-miadmin-y-miadmin2)
-    - [2.2. Cuentas de Desarrolladores (`operadorweb`)](#22-cuentas-de-desarrolladores-operadorweb)
-    - [2.3. Comprobación de Cuentas y Permisos](#23-comprobación-de-cuentas-y-permisos)
+    - [2.2. Comprobación de Cuentas y Permisos](#22-comprobación-de-cuentas-y-permisos)
   - [3. Apache](#3-apache)
     - [3.1. Instalación de Apache2](#31-instalación-de-apache2)
     - [3.2. Configuración de HTTP, SSL y Cortafuegos](#32-configuración-de-http-ssl-y-cortafuegos)
@@ -44,6 +43,7 @@
     - [5.3. Comprobación del Servicio MariaDB](#53-comprobación-del-servicio-mariadb)
     - [5.4 Instalación de phpMyAdmin](#54-instalación-de-phpmyadmin)
     - [5.5 Comprobación de phpmyadmin](#55-comprobación-de-phpmyadmin)
+  - [6. Cuentas de Desarrollo](#22-cuentas-de-desarrollo)
 
 ---
 
@@ -83,7 +83,7 @@ Inicia la máquina virtual seleccionando la ISO de **Ubuntu Server** (versión r
      - **Partición 2 (Swap):** Tamaño `4G` (RAM $\times 2$), Formato `swap`.
      - **Partición 3 (Datos):** Tamaño `350G`, Formato `ext4`, Punto de montaje `/var`.
 4. **Configuración del Perfil (Usuario principal):**
-   - Nombre: `Moisés`
+   - Nombre: `Juan`
    - Nombre del servidor: `JDP-USLimpia`
    - Nombre de usuario: `miadmin`
    - Contraseña: `paso`
@@ -231,55 +231,6 @@ sudo usermod -aG sudo,adm,cdrom,dip,plugdev,lxd miadmin2
 
 ---
 
-### 2.2. Cuentas de Desarrolladores (`operadorweb`)
-
-El usuario operador web gestiona el contenido del servidor web con permisos limitados a `/var/www/html`.
-
-> - [X] **operadorweb/paso** - Gestión de contenido web
-
-**Características:**
-- **Directorio home:** `/var/www/html`
-- **Grupo primario:** `www-data`
-- **Shell:** `/bin/bash`
-- **Permisos:** `rwx` en `/var/www/html`
-
-**Creación del Usuario Operador Web:**
-```bash
-# Crear usuario operador web
-sudo useradd -M -d /var/www/html -g www-data -s /bin/bash operadorweb
-
-# Establecer contraseña (paso)
-sudo passwd operadorweb
-```
-**Explicación de parámetros:**
-- `-M`: No crear directorio home automáticamente
-- `-d /var/www/html`: Directorio home existente
-- `-g www-data`: Grupo primario
-- `-s /bin/bash`: Shell bash
-
-**Configurar Propiedad y Permisos:**
-```bash
-# Cambiar propietario y grupo
-sudo chown -R operadorweb:www-data /var/www/html
-
-# Establecer permisos
-sudo chmod -R 775 /var/www/html
-```
-**Explicación y justificación de permisos 775:**
-- **7** (Propietario `operadorweb`): `rwx` $\rightarrow$ puede crear, modificar y eliminar archivos.
-- **7** (Grupo `www-data` / Apache): `rwx` $\rightarrow$ puede leer, ejecutar y escribir si es necesario.
-- **5** (Otros): `r-x` $\rightarrow$ solo lectura y ejecución.
-
-*(Opcional) Crear cuentas adicionales estándar si es necesario:*
-```bash
-# Crear operadorweb2 (Contraseña: paso)
-sudo adduser operadorweb2
-
-# Crear operadorweb3 (Contraseña: paso)
-sudo adduser operadorweb3
-```
-
----
 
 ### 2.3. Comprobación de Cuentas y Permisos
 
@@ -648,6 +599,56 @@ sudo ufw status
 ### 5.5 Comprobación de phpmyadmin
 
 Accede a traves de la URL **http://IP/phpmyadmin**  
+
+---
+
+## 6. Cuentas de Desarrollo
+
+El usuario operador web gestiona el contenido del servidor web con permisos limitados a `/var/www/html`.
+
+> - [X] **operadorweb/paso** - Gestión de contenido web
+
+**Características:**
+- **Directorio home:** `/var/www/html`
+- **Grupo primario:** `www-data`
+- **Shell:** `/bin/bash`
+- **Permisos:** `rwx` en `/var/www/html`
+
+**Creación del Usuario Operador Web:**
+```bash
+# Crear usuario operador web
+sudo useradd -M -d /var/www/html -g www-data -s /bin/bash operadorweb
+
+# Establecer contraseña (paso)
+sudo passwd operadorweb
+```
+**Explicación de parámetros:**
+- `-M`: No crear directorio home automáticamente
+- `-d /var/www/html`: Directorio home existente
+- `-g www-data`: Grupo primario
+- `-s /bin/bash`: Shell bash
+
+**Configurar Propiedad y Permisos:**
+```bash
+# Cambiar propietario y grupo
+sudo chown -R operadorweb:www-data /var/www/html
+
+# Establecer permisos
+sudo chmod -R 775 /var/www/html
+```
+**Explicación y justificación de permisos 775:**
+- **7** (Propietario `operadorweb`): `rwx` $\rightarrow$ puede crear, modificar y eliminar archivos.
+- **7** (Grupo `www-data` / Apache): `rwx` $\rightarrow$ puede leer, ejecutar y escribir si es necesario.
+- **5** (Otros): `r-x` $\rightarrow$ solo lectura y ejecución.
+
+*(Opcional) Crear cuentas adicionales estándar si es necesario:*
+```bash
+# Crear operadorweb2 (Contraseña: paso)
+sudo adduser operadorweb2
+
+# Crear operadorweb3 (Contraseña: paso)
+sudo adduser operadorweb3
+```
 
 ---
 Autor: Moises Dominguez Cruz
