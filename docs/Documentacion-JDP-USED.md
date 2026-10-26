@@ -554,6 +554,8 @@ sudo apt install php8.5-mysql
 # Reiniciar servicio
 sudo systemctl restart php8.5-fpm
 
+# Reiniciar servicio
+sudo systemctl restart mariadb
 ```
 
 #### Abrir Puerto en UFW
