@@ -18,14 +18,8 @@
     - [5.1 Instalacion](#51-instalacion)
     - [5.2 Configuracion](#52-configuracion)
       - [Gestion de Pluggins](#gestion-de-pluggins)
-        - [Abrir](#abrir)
-        - [Actualizar](#actualizar)
-        - [Descargar](#descargar)
-        - [Administrar](#administrar)
     - [5.3 Ejemplo de Uso](#53-ejemplo-de-uso)
       - [Creación de Proyecto en Netbeans](#creación-de-proyecto-en-netbeans)
-        - [Pasos de Creación](#pasos-de-creación)
-        - [Conexión con el Servidor](#conexión-con-el-servidor)
       - [Pasos de Creación de Archivo](#pasos-de-creación-de-archivo)
       - [Modificación de Proyecto en Netbeans](#modificación-de-proyecto-en-netbeans)
       - [Eliminación de Proyecto en Netbeans](#eliminación-de-proyecto-en-netbeans)
@@ -38,19 +32,57 @@
 ## 1. Configuracion Inicial de la Maquina 
 
 ### 1.1 Especificaciones de la Maquinas:
-Sistema Operativo: `Windows 11`
-Cuenta de Operador: `juanm.domper`
-Ruta de Proyectos: `D:\ProyectosNB`
+
+#### Maquina del Instituto
+El sistema operativo utilizado es Windows 10 Pro.  
+
+**Especificaciones de Windows:**
+- Edición: Windows 10 Pro
+- Versión: 22H2
+- Instalado el: 08/09/2025
+- Experiencia: Windows Feature Experience Pack 1000.19062.1000.0
+
+Especificaciones del dispositivo (supervisado por un dominio):
+- Nombre del dispositivo: ED49000391P391
+- Nombre completo del dispositivo: ED49000391P391.educa.jcyl.es
+- Procesador: Intel(R) Core(TM) i5-7400 CPU @ 3.00GHz 3.00 GHz
+- RAM instalada: 16,0 GB (15,9 GB usable)
+- Tipo de sistema: Sistema operativo de 64 bits, procesador basado en x64
+
+#### Maquina de Casa
+El sistema operativo utilizado es Windows 11 Home.  
+
+**Especificaciones de Windows:**
+- Edición: Windows 11 Home
+- Versión: 25H2
+- Instalado el: 07/09/2025
+- Experiencia: Windows Feature Experience Pack 1000.26100.372.0
+
+Especificaciones del dispositivo (supervisado por un dominio):
+- Nombre del dispositivo: JuanmiPC
+- Procesador: AMD Ryzen 7 5700X3D 8-Core Processor (3.00 GHz)
+- RAM instalada: 32,0 GB (31,9 GB usable)
+- ID del Dispositivo: E654DD56-36D1-4AB9-A30C-0B717D0B8E7A
+- Tipo de sistema: Sistema operativo de 64 bits, procesador basado en x64
+
+---
 
 ## 2. Cuentas Administradoras y Cuenta de Desarrollo
 
-### 2.1 Cuentas
+- Cuentas administradoras: El dominio está gestionado por la Junta de Castilla y León (educa.jcyl).
+- Cuenta de desarrollador: Se utiliza la cuenta personal del portal (juanm.domper@educa.jcyl.es).
+
+---
 
 ## 3. Navegadores
 
 ### 3.1 Google Chrome
 
 > - El navegador utilizado es Google Chrome
+
+Descargar en: https://www.google.com/chrome/ 
+
+---
 
 ## 4. MobaXterm
 
@@ -75,6 +107,7 @@ Ruta de Proyectos: `D:\ProyectosNB`
 5. Haz click en `OK` y procede a introucir la contraseña
 6. Abrira una ventana con las carpetas locales a la izquierda y las remotas a la derecha
   
+---
 
 ## 5. IDE Netbeans
 
@@ -83,6 +116,8 @@ Ruta de Proyectos: `D:\ProyectosNB`
 > Descargar NetBeans desde el siguiente enlace: https://netbeans.apache.org/front/main/index.html 
 
 - Durante la instalacion, deberas seleccionar la herramientas que vayas a utilizar como Java o PHP
+
+---
 
 ### 5.2 Configuracion
 
@@ -109,6 +144,8 @@ Ruta de Proyectos: `D:\ProyectosNB`
 ##### Administrar 
 - Haz click en `Installed`
 - Selecciona los plugins deseados y podemos escoger si `Activate`, `Deactivate` o `Unistall`
+
+---
 
 ### 5.3 Ejemplo de Uso
 
@@ -142,6 +179,7 @@ Ruta de Proyectos: `D:\ProyectosNB`
 
 **Finalizamos Creación**
 
+---
 
 #### Pasos de Creación de Archivo
 1. Haz click derecho en el proyecto donde deseas guardad el fichero
@@ -162,5 +200,27 @@ Ruta de Proyectos: `D:\ProyectosNB`
 2. Haz click en  `Delete`
 3. Selecciona el checkbox y luego haz click en `yes` para eliminar todo el directorio del Proyecto
 
+---
+
 #### Enlace de Proyecto en Netbeans con el GitHub
+
+---
+
+#### Conexion a Bases de Datos
+
+*Asegurate tener descagado el driver de Mariadb*
+1. Haz click en `Services`
+2. Haz click derecho en `Databases` y luego haz click en `New Connection`
+3. En `Driver` selecciona `New Driver`
+4. Haz click en `Add...` y añade el driver de Mariadb
+5. Cambia el nombre si deseas y luego haz click en `OK`
+6. Haz click en `Next` y Rellena los siguientes campos:
+  - Host: Direccion IP del servidor (ej. 10.199.9.114)
+  - Username: nombre del administrador de la bases de datos (ej. adminsql)
+  - Contraseña: contraseña del usuario
+7. Haz click en `Test Conection` para comprobar la conexion y luego haz click en `Finish`
+
+**Conexion creada**
+
+---
 
