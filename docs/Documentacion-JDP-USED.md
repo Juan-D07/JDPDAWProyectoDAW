@@ -17,7 +17,7 @@
     - [1.5. Comprobación de la Configuración Inicial](#15-comprobación-de-la-configuración-inicial)
   - [2. Cuentas de Administración](#2-cuentas-de-administración)
     - [2.1. Cuentas Administradoras (`miadmin` y `miadmin2`)](#21-cuentas-administradoras-miadmin-y-miadmin2)
-    - [2.2. Comprobación de Cuentas y Permisos](#22-comprobación-de-cuentas-y-permisos)
+    - [2.3. Comprobación de Cuentas y Permisos](#23-comprobación-de-cuentas-y-permisos)
   - [3. Apache](#3-apache)
     - [3.1. Instalación de Apache2](#31-instalación-de-apache2)
     - [3.2. Configuración de HTTP, SSL y Cortafuegos](#32-configuración-de-http-ssl-y-cortafuegos)
@@ -43,7 +43,7 @@
     - [5.3. Comprobación del Servicio MariaDB](#53-comprobación-del-servicio-mariadb)
     - [5.4 Instalación de phpMyAdmin](#54-instalación-de-phpmyadmin)
     - [5.5 Comprobación de phpmyadmin](#55-comprobación-de-phpmyadmin)
-  - [6. Cuentas de Desarrollo](#22-cuentas-de-desarrollo)
+  - [6. Cuentas de Desarrollo](#6-cuentas-de-desarrollo)
 
 ---
 
@@ -643,6 +643,21 @@ sudo chmod -R 775 /var/www/html
 - **7** (Grupo `www-data` / Apache): `rwx` $\rightarrow$ puede leer, ejecutar y escribir si es necesario.
 - **5** (Otros): `r-x` $\rightarrow$ solo lectura y ejecución.
 
+**Comprobacion de Creacion**
+```bash
+# Ver información
+id operadorweb
+
+# Verificar propiedad
+ls -la /var/www/
+
+# Verificar permisos
+ls -ld /var/www/html
+```
+
+**Salida esperada:**
+`drwxrwxr-x 2 operadorweb www-data 4096 nov 30 10:00 /var/www/html`
+
 *(Opcional) Crear cuentas adicionales estándar si es necesario:*
 ```bash
 # Crear operadorweb2 (Contraseña: paso)
@@ -653,5 +668,4 @@ sudo adduser operadorweb3
 ```
 
 ---
-Autor: Moises Dominguez Cruz
-Modificado por: Juan Miguel Dominguez Perdigon
+Autores: Juan Miguel Dominguez Perdigon y Moises Alberto Dominguez Cruz 
