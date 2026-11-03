@@ -34,7 +34,7 @@
     - [4.3. Comprobación del Servicio PHP-FPM](#43-comprobación-del-servicio-php-fpm)
   - [5. MariaDB](#5-mariadb)
     - [5.1. Instalación de MariaDB](#51-instalación-de-mariadb)
-    - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb)
+    - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb) 
       - [Configuración de puerto](#configuración-de-puerto)
       - [Creación de Usuario](#creación-de-usuario)
       - [Instalación Segura](#instalación-segura)
