@@ -6,8 +6,9 @@
   - [Índice de Contenidos](#índice-de-contenidos)
   - [1. Configuracion Inicial de la Maquina](#1-configuracion-inicial-de-la-maquina)
     - [1.1 Especificaciones de la Maquinas:](#11-especificaciones-de-la-maquinas)
+      - [Maquina del Instituto](#maquina-del-instituto)
+      - [Maquina de Casa](#maquina-de-casa)
   - [2. Cuentas Administradoras y Cuenta de Desarrollo](#2-cuentas-administradoras-y-cuenta-de-desarrollo)
-    - [2.1 Cuentas](#21-cuentas)
   - [3. Navegadores](#3-navegadores)
     - [3.1 Google Chrome](#31-google-chrome)
   - [4. MobaXterm](#4-mobaxterm)
@@ -18,12 +19,19 @@
     - [5.1 Instalacion](#51-instalacion)
     - [5.2 Configuracion](#52-configuracion)
       - [Gestion de Pluggins](#gestion-de-pluggins)
+        - [Abrir](#abrir)
+        - [Actualizar](#actualizar)
+        - [Descargar](#descargar)
+        - [Administrar](#administrar)
     - [5.3 Ejemplo de Uso](#53-ejemplo-de-uso)
       - [Creación de Proyecto en Netbeans](#creación-de-proyecto-en-netbeans)
+        - [Pasos de Creación](#pasos-de-creación)
+        - [Conexión con el Servidor](#conexión-con-el-servidor)
       - [Pasos de Creación de Archivo](#pasos-de-creación-de-archivo)
       - [Modificación de Proyecto en Netbeans](#modificación-de-proyecto-en-netbeans)
       - [Eliminación de Proyecto en Netbeans](#eliminación-de-proyecto-en-netbeans)
       - [Enlace de Proyecto en Netbeans con el GitHub](#enlace-de-proyecto-en-netbeans-con-el-github)
+      - [Conexion a Bases de Datos](#conexion-a-bases-de-datos)
 
 ---
 
@@ -203,6 +211,8 @@ Descargar en: https://www.google.com/chrome/
 ---
 
 #### Enlace de Proyecto en Netbeans con el GitHub
+
+
 
 ---
 

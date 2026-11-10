@@ -17,7 +17,7 @@
     - [1.5. Comprobación de la Configuración Inicial](#15-comprobación-de-la-configuración-inicial)
   - [2. Cuentas de Administración](#2-cuentas-de-administración)
     - [2.1. Cuentas Administradoras (`miadmin` y `miadmin2`)](#21-cuentas-administradoras-miadmin-y-miadmin2)
-    - [2.3. Comprobación de Cuentas y Permisos](#23-comprobación-de-cuentas-y-permisos)
+    - [2.2. Comprobación de Cuentas y Permisos](#22-comprobación-de-cuentas-y-permisos)
   - [3. Apache](#3-apache)
     - [3.1. Instalación de Apache2](#31-instalación-de-apache2)
     - [3.2. Configuración de HTTP, SSL y Cortafuegos](#32-configuración-de-http-ssl-y-cortafuegos)
@@ -34,7 +34,7 @@
     - [4.3. Comprobación del Servicio PHP-FPM](#43-comprobación-del-servicio-php-fpm)
   - [5. MariaDB](#5-mariadb)
     - [5.1. Instalación de MariaDB](#51-instalación-de-mariadb)
-    - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb) 
+    - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb)
       - [Configuración de puerto](#configuración-de-puerto)
       - [Creación de Usuario](#creación-de-usuario)
       - [Instalación Segura](#instalación-segura)
@@ -44,6 +44,13 @@
     - [5.4 Instalación de phpMyAdmin](#54-instalación-de-phpmyadmin)
     - [5.5 Comprobación de phpmyadmin](#55-comprobación-de-phpmyadmin)
   - [6. Cuentas de Desarrollo](#6-cuentas-de-desarrollo)
+    - [6.1 Cuentas de Desarrollo (`operadorweb`)](#61-cuentas-de-desarrollo-operadorweb)
+    - [6.2 Comprobacion de Creacion](#62-comprobacion-de-creacion)
+  - [7. SSH](#7-ssh)
+    - [7.1 Instalacion](#71-instalacion)
+    - [7.2 Mantenimiento](#72-mantenimiento)
+  - [8. UFW](#8-ufw)
+    - [8.3 Puertos abiertos](#83-puertos-abiertos)
 
 ---
 
@@ -231,8 +238,7 @@ sudo usermod -aG sudo,adm,cdrom,dip,plugdev,lxd miadmin2
 
 ---
 
-
-### 2.3. Comprobación de Cuentas y Permisos
+### 2.2. Comprobación de Cuentas y Permisos
 
 ```bash
 # Comprobar los usuarios (miadmin y miadmin2) y a qué grupos pertenecen (deben estar en 'sudo')
@@ -243,19 +249,7 @@ cat /etc/group | grep miadmin
 id miadmin2
 cat /etc/passwd | grep miadmin2
 cat /etc/group | grep miadmin2
-
-# Ver información de operadorweb
-id operadorweb
-
-# Verificar propiedad y permisos del directorio web
-ls -la /var/www/
-ls -ld /var/www/html
 ```
-**Salida esperada:**
-```text
-drwxrwxr-x 2 operadorweb www-data 4096 Sep 21 21:34 /var/www/html
-```
-
 ---
 
 ## 3. Apache
@@ -606,6 +600,8 @@ Accede a traves de la URL **http://IP/phpmyadmin**
 
 ## 6. Cuentas de Desarrollo
 
+### 6.1 Cuentas de Desarrollo (`operadorweb`)
+
 El usuario operador web gestiona el contenido del servidor web con permisos limitados a `/var/www/html`.
 
 > - [X] **operadorweb/paso** - Gestión de contenido web
@@ -643,7 +639,7 @@ sudo chmod -R 775 /var/www/html
 - **7** (Grupo `www-data` / Apache): `rwx` $\rightarrow$ puede leer, ejecutar y escribir si es necesario.
 - **5** (Otros): `r-x` $\rightarrow$ solo lectura y ejecución.
 
-**Comprobacion de Creacion**
+### 6.2 Comprobacion de Creacion
 ```bash
 # Ver información
 id operadorweb
@@ -666,6 +662,39 @@ sudo adduser operadorweb2
 # Crear operadorweb3 (Contraseña: paso)
 sudo adduser operadorweb3
 ```
+
+
+## 7. SSH
+
+### 7.1 Instalacion
+
+El servicio ssh se puede instalar en la configuracion Inicial de la maquina  
+para comprobar usa `sudo systemctl status ssh`
+
+en caso de que no este instalado:
+```bash
+# Actualizar el sistema
+sudo apt update
+
+# Instalacion de servicio
+sudo apt install ssh -y
+```
+
+### 7.2 Mantenimiento
+
+## 8. UFW
+
+
+### 8.3 Puertos abiertos
+
+| Servicio | Puerto | Explicaciones |
+|---|---|---|
+| SSH (OpenSSH) | `22` | Control remoto (`miadmin`) desde CMD o MobaXterm. |
+| SFTP | `22` | TCP |  Va sobre SSH. Lo usan NetBeans, VS Code y MobaXterm con `operadorweb`. |
+| Apache2 HTTP | `80` | Redirige a HTTPS mediante el `.htaccess` (apartado 3.5). |
+| Apache2 HTTPS | `443` | Sitio seguro `default-ssl.conf` con certificado autofirmado. |
+| MariaDB | `3306` | Ejecutar scripts sql desde NetBeans |
+| Xdebug 3 | `9003` | El que escucha es **NetBeans en el cliente**. Se abre en el Firewall de Windows. |
 
 ---
 Autores: Juan Miguel Dominguez Perdigon y Moises Alberto Dominguez Cruz 
