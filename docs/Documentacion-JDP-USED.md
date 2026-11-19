@@ -45,7 +45,8 @@
     - [5.5 Comprobación de phpmyadmin](#55-comprobación-de-phpmyadmin)
   - [6. Cuentas de Desarrollo](#6-cuentas-de-desarrollo)
     - [6.1 Cuentas de Desarrollo (`operadorweb`)](#61-cuentas-de-desarrollo-operadorweb)
-    - [6.2 Comprobacion de Creacion](#62-comprobacion-de-creacion)
+    - [6.2 Cuentas de Desarrollo Enjauladas (`enjaulado`)](#62-cuentas-de-desarrollo-enjauladas-enjaulado)
+    - [6.3 Comprobacion de Creacion](#63-comprobacion-de-creacion)
   - [7. SSH](#7-ssh)
     - [7.1 Instalacion](#71-instalacion)
     - [7.2 Mantenimiento](#72-mantenimiento)
@@ -639,7 +640,55 @@ sudo chmod -R 775 /var/www/html
 - **7** (Grupo `www-data` / Apache): `rwx` $\rightarrow$ puede leer, ejecutar y escribir si es necesario.
 - **5** (Otros): `r-x` $\rightarrow$ solo lectura y ejecución.
 
-### 6.2 Comprobacion de Creacion
+
+### 6.2 Cuentas de Desarrollo Enjauladas (`enjaulado`)
+
+El usuario enjaulado gestiona el contenido del servidor web con con acceso limitado a `/var/www/html`.
+
+**Creacion del Grupo**
+`sudo groupadd sftusers`
+
+**Creacion del Usuario enjaulado**
+`sudo useradd -g www-data -G sftpusers -m -d /var/www/nombreusuario enjaulado1`
+
+**Cambio de Contraseña**
+`sudo passwd enjaulado1`
+
+**Cambiar de Propietario el Directorio**
+`sudo chown root:root /var/www/nombreusuario`
+
+**Cambiar de Permisos del Usuario**
+`sudo chmod 555 /var/www/nombreusuario`
+
+**Creacion de la Capeta httpdocs**
+`sudo mkdir /var/www/enjaulado1/httpdocs`
+
+**Cambiar Permisos de la Capeta httpdocs**
+`sudo chmod 2775 -R /var/www/enjaulado1/httpdocs`
+
+**Cambiar Propietario de la Capeta httpdocs**
+`sudo chown enjaulado1:www-data -R /var/www/enjaulado1/httpdocs`
+
+**Cambiar Propietario de la Capeta httpdocs**
+`sudo chown enjaulado1:www-data -R /var/www/enjaulado1/httpdocs`
+
+**Cambiar Archivo Configuracion**
+`sudo nano /etc/ssh/sshd_config`
+
+buscar y comentar linea `Subsystem sftp /usr/ñib/openssh/sftp-server` 
+Agregar
+```bash
+Subsystem sftp internal -sftp
+
+Match Group sftpusers
+ChrootDirectory %h 
+ForceCommand internal-sftp -u 2
+AllowTcpForwarding no 
+PermitTunnel no 
+X11Forwarding no
+```
+
+### 6.3 Comprobacion de Creacion
 ```bash
 # Ver información
 id operadorweb
@@ -649,6 +698,9 @@ ls -la /var/www/
 
 # Verificar permisos
 ls -ld /var/www/html
+
+# Verificar grupos
+cat /etc/group | grep sftp
 ```
 
 **Salida esperada:**
