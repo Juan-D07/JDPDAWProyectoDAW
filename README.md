@@ -25,12 +25,14 @@ Abrir un navegador web.
 Visualiza las tareas
 ## 5. Estructura del proyecto
 
+```bash
 JDPDAWProyectoDAW/
 ├── indexProyectoDAW.php
 ├── .htaccess
 ├── docs
 ├── error
 └── webroot
+```
 
 ## 6. Funcionalidades
 - Visulizar trabajos
