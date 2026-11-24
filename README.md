@@ -12,7 +12,7 @@ Clonar el repositorio:
 `git clone https://github.com/Juan-D07/JDPDAWProyectoDAW`
 
 Acceder a la carpeta del proyecto:
-`cd JDPDAWProyectoTemaDAW`
+`cd JDPDAWProyectoDAW`
 
 Iniciar el servidor de desarrollo de PHP:
 `php -S localhost:8000`
