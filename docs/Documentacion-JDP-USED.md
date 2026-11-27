@@ -51,7 +51,7 @@
   - [7. SSH](#7-ssh)
     - [7.1 Instalacion de SSH](#71-instalacion-de-ssh)
     - [7.2 Mantenimiento de SSH](#72-mantenimiento-de-ssh)
-    - [7.2 Ejemplo de Uso de SSH](#73-ejemplo-de-uso-de-ssh)
+    - [7.3 Ejemplo de Uso de SSH](#73-ejemplo-de-uso-de-ssh)
   - [8. UFW](#8-ufw)
     - [8.1 Instalacion de UFW](#81-instalacion-de-ufw)
     - [8.2 Mantenimiento de UFW](#82-mantenimiento-de-ufw)
