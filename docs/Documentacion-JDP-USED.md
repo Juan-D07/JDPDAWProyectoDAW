@@ -31,7 +31,8 @@
     - [4.1. Instalación de PHP 8.5-FPM](#41-instalación-de-php-85-fpm)
     - [4.2. Integración de PHP-FPM con Apache2](#42-integración-de-php-fpm-con-apache2)
         - [Configurar para Desarrollo](#configurar-para-desarrollo)
-    - [4.3. Comprobación del Servicio PHP-FPM](#43-comprobación-del-servicio-php-fpm)
+    - [4.3. Modulo Xdebug](#43-modulo-xdebug)
+    - [4.4. Comprobación del Servicio PHP-FPM](#44-comprobación-del-servicio-php-fpm)
   - [5. MariaDB](#5-mariadb)
     - [5.1. Instalación de MariaDB](#51-instalación-de-mariadb)
     - [5.2. Configuración de MariaDB](#52-configuración-de-mariadb)
@@ -48,9 +49,12 @@
     - [6.2 Cuentas de Desarrollo Enjauladas (`enjaulado`)](#62-cuentas-de-desarrollo-enjauladas-enjaulado)
     - [6.3 Comprobacion de Creacion](#63-comprobacion-de-creacion)
   - [7. SSH](#7-ssh)
-    - [7.1 Instalacion](#71-instalacion)
-    - [7.2 Mantenimiento](#72-mantenimiento)
+    - [7.1 Instalacion de SSH](#71-instalacion-de-ssh)
+    - [7.2 Mantenimiento de SSH](#72-mantenimiento-de-ssh)
+    - [7.3 Ejemplo de Uso de SSH](#73-ejemplo-de-uso-de-ssh)
   - [8. UFW](#8-ufw)
+    - [8.1 Instalacion de UFW](#81-instalacion-de-ufw)
+    - [8.2 Mantenimiento de UFW](#82-mantenimiento-de-ufw)
     - [8.3 Puertos abiertos](#83-puertos-abiertos)
 
 ---
@@ -478,10 +482,53 @@ upload_max_filesize = 100M
 max_execution_time = 360
 date.timezone = Europe/Madrid
 ```
+---
+
+### 4.3 Modulo Xdebug
+
+Instala el servicio con el comando:
+`sudo apt instal php-xdebug` 
+
+haz una copia del archivo de configuracion con:
+`sudo cp /etc/php/8.5/mods-available/xdebug.ini /etc/php/8.5/mods-available/xdebug.ini.backup`
+
+accede al archivo de configuracion con:
+`sudo nano /etc/php/8.5/mods-available/xdebug.ini`
+
+Cambia el contenido del archivo a esto:
+```text
+[xdebug]
+zend_extension=xdebug.so
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.discover_client_host=true
+xdebug.client_port=9003
+xdebug.idekey=NetBeans
+xdebug.log=/var/log/xdebug.log
+```
+
+**Explicacion:**
+-zend_extension=xdebug.so: Carga la extensión Xdebug en PHP.
+-xdebug.mode=debug: Activa el modo de depuración paso a paso (breakpoints, trazado).
+-xdebug.start_with_request=yes: Inicia la depuración en todas las peticiones, sin tener que añadir nada a la URL.
+-xdebug.discover_client_host=true: Xdebug detecta automáticamente la IP del cliente que ha hecho la petición HTTP y le devuelve la conexión de depuración. Así funciona igual en clase y en casa sin cambiar la IP.
+-xdebug.client_port=9003: Puerto del cliente donde escucha NetBeans (es el puerto por defecto de Xdebug 3; Xdebug 2 usaba el 9000).
+-xdebug.idekey=NetBeans: Identificador de la sesión. Debe coincidir con el Session ID configurado en NetBeans.
+-xdebug.log=/var/log/xdebug.log: Fichero de log, muy útil cuando la conexión no funciona.
+
+
+Reinicia los servicios con: 
+```bash
+sudo systemctl restart php8.5-fpm
+sudo systemctl restart apache2
+```
+
+y comprueba la instalacion de modulo con:
+`php-fpm8.5 -m | grep -i xdebug`
 
 ---
 
-### 4.3. Comprobación del Servicio PHP-FPM
+### 4.4. Comprobación del Servicio PHP-FPM
 
 ```bash
 # Comprobar el estado del servicio PHP-FPM
@@ -718,7 +765,7 @@ sudo adduser operadorweb3
 
 ## 7. SSH
 
-### 7.1 Instalacion
+### 7.1 Instalacion de SSH
 
 El servicio ssh se puede instalar en la configuracion Inicial de la maquina  
 para comprobar usa `sudo systemctl status ssh`
@@ -732,10 +779,73 @@ sudo apt update
 sudo apt install ssh -y
 ```
 
-### 7.2 Mantenimiento
+### 7.2 Mantenimiento de SSH
+
+Los siguientes comandos estan disponibles para el mantenimiento del servicio
+
+- **Estado:** `sudo systemctl status ssh`
+- **Iniciar:** `sudo systemctl start ssh`
+- **Detener:** `sudo systemctl stop ssh`
+- **Reiniciar:** `sudo systemctl restart ssh`
+- **Habilitar:** `sudo systemctl enable ssh`
+- **Deshabilitar:** `sudo systemctl disable ssh`
+- **Recargar:** `sudo systemctl reload ssh`
+
+
+### 7.3 Ejemplo de Uso de SSH
+
+El servicio ssh permite a los usuarios acceder a mauinas remotamente 
+
+> ssh *nombreUsuario*@*ipMaquina*
+
+**Ejemplo:**
+
+> ssh miadmin@10.199.9.114
 
 ## 8. UFW
 
+### 8.1 Instalacion de UFW
+
+El servicio de cortafuegos viene instalado en la configuracion Inicial de la maquina  
+para comprobar usa `sudo systemctl status ufw`
+
+en caso de que no este instalado:
+```bash
+# Actualizar el sistema
+sudo apt update
+
+# Instalacion de servicio
+sudo apt install ufw -y
+```
+
+### 8.2 Mantenimiento de UFW
+
+Los siguientes comandos estan disponibles para el mantenimiento del servicio
+
+- **Estado:** `sudo systemctl status ssh`
+- **Iniciar:** `sudo systemctl start ssh`
+- **Detener:** `sudo systemctl stop ssh`
+- **Reiniciar:** `sudo systemctl restart ssh`
+- **Habilitar:** `sudo systemctl enable ssh`
+- **Deshabilitar:** `sudo systemctl disable ssh`
+- **Recargar:** `sudo systemctl reload ssh`
+
+
+En caso de que quieras ver los puertos abiertos usa el comando:
+
+> sudo ufw status
+
+y a detalle el comando:
+
+> sudo ufw status verbose
+
+En caso de que quieras borrar algun puerto de la regla usa el siquiente comando para ver su numero:
+
+> sudo ufw status numbered
+
+y luego usa el siguiente comando con el numero del puerto que quieras cerrar:
+
+> sudo ufw delete *numeroPuerto*
 
 ### 8.3 Puertos abiertos
 
@@ -746,7 +856,7 @@ sudo apt install ssh -y
 | Apache2 HTTP | `80` | Redirige a HTTPS mediante el `.htaccess` (apartado 3.5). |
 | Apache2 HTTPS | `443` | Sitio seguro `default-ssl.conf` con certificado autofirmado. |
 | MariaDB | `3306` | Ejecutar scripts sql desde NetBeans |
-| Xdebug 3 | `9003` | El que escucha es **NetBeans en el cliente**. Se abre en el Firewall de Windows. |
+
 
 ---
 Autores: Juan Miguel Dominguez Perdigon y Moises Alberto Dominguez Cruz 
